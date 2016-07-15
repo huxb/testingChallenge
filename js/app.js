@@ -1,1 +1,3 @@
-console.log("My favorite movie is {{pick a movie}}");
+"use strict";
+
+var testingApp = angular.module('TestingApp', []);

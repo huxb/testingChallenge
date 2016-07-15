@@ -1,0 +1,31 @@
+<form name="signupForm">
+	<div class="form-group">
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email" class="form-control" required ng-model="email" placeholder="email address">
+		<!-- Show errors -->
+	</div>
+	<div class="form-group">
+		<label for="firstname">First Name</label>
+		<input type="text" id="firstname" name="firstname" class="form-control" required ng-model="firstname" placeholder="your first name">
+	</div>
+	<div class="form-group">
+		<label for="lastname">Last Name</label>
+		<input type="text" id="lastname" name="lastname" class="form-control" required ng-model="lastname" placeholder="your last name">
+	</div>
+	<div class="form-group">
+		<label for="birthdate">Date of Birth</label>
+		<input type="date" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate">
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" class="form-control" required ng-model="password">
+	</div>
+	<div class="form-group">
+		<label for="confirm-password">Confirm Password</label>
+		<input type="password" id="confirm" name="confirm" class="form-control" required ng-model="confirm">
+	</div>
+	<div class="form-group">
+		<button type="reset" class="btn btn-default">Reset</button>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</div>
+</form>
