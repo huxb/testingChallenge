@@ -72,12 +72,14 @@ describe('Email', function() {
     // if email is not valid, display error message to alert invalid
     it ('email should be valid', function() {
         email.sendKeys('temp');
+        email.clear();
         expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(false);
         expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(true);
     });
     // if email is valid, do not display
     it ('no warnings if everything is correct', function() {
         email.sendKeys('validEmail@testing.app');
+        email.clear();
         expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(false);
         expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(false);
     });
@@ -85,18 +87,24 @@ describe('Email', function() {
 
 
 describe('Birthdate', function() {
+    var birthdate = element(by.css('#birthdate')); 
+    it('should be invalid if no date was entered', function() {
+        birthdate.click();
+        element(by.css('#firstname')).click();
+        expect(element(by.css('#birthdateAlert')).isDisplayed()).toEqual(true);
+    })
     it('should give invalid error when a user is under 13', function() {
-        var birthdate = element(by.css('#birthdate')); 
         var check = element(by.css('#errorAge'));
-         birthdate.sendKeys('1/1/2014');
+        birthdate.sendKeys('1/1/2014');
+        birthdate.clear();
         element(by.css('#password')).sendKeys('password');
         element(by.css('#confirmPass')).sendKeys('password');
         expect(check.isPresent()).toEqual(true);
     });
     it('should be invalid if date is not in the right format', function() {
-        var birthdate = element(by.css('#birthdate')); 
         var validDate = element(by.css('#errorDateValid'));
         birthdate.sendKeys("hafjshjhsa");
+        birthdate.clear();
         element(by.css('#password')).sendKeys('password');
         element(by.css('#confirmPass')).sendKeys('password');
         expect(validDate.isPresent()).toEqual(true);
