@@ -100,16 +100,12 @@ describe('Birthdate', function() {
         var check = element(by.css('#errorAge'));
         birthdate.sendKeys('1/1/2014');
         birthdate.clear();
-        element(by.css('#password')).sendKeys('password');
-        element(by.css('#confirmPass')).sendKeys('password');
         expect(check.isPresent()).toEqual(true);
     });
     it('should be invalid if date is not in the right format', function() {
         var validDate = element(by.css('#errorDateValid'));
         birthdate.sendKeys("hafjshjhsa");
         birthdate.clear();
-        element(by.css('#password')).sendKeys('password');
-        element(by.css('#confirmPass')).sendKeys('password');
         expect(validDate.isPresent()).toEqual(true);
     });
 });
