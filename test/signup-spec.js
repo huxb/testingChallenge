@@ -1,3 +1,5 @@
+"use strict";
+
 // Test First Name and Last Name 
 describe('Last Name', function () {
     browser.get('http://localhost:8080/#/signup-form.html');
@@ -17,6 +19,7 @@ describe('Last Name', function () {
         expect(errorMessage.isDisplayed()).toEqual(false);
     });
 });
+<<<<<<< HEAD
 
 //Test password and confirm passowrd for match
 describe('Password', function(){
@@ -44,3 +47,5 @@ describe('Password', function(){
             expect(element(by.css('.matchPass')).isDisplayed()).toBe(false);
     });
 });
+=======
+>>>>>>> 004165e6a822963c89c39517f2c64a7f404f4c16
