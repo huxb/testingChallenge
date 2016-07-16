@@ -30,18 +30,18 @@ describe('Password', function(){
     var confirmPass = element(by.css('#confirmPass'));
     it('password should exist', function() {
         password.sendKeys('temp');
-        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(false);
+        expect(element(by.css('#passwordAlert')).isDisplayed()).toEqual(false);
 
         password.clear();
         element(by.css('#firstname')).click();
-        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(true);
+        expect(element(by.css('#passwordAlert')).isDisplayed()).toEqual(true);
 
         confirmPass.sendKeys('password');
-        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(false);
+        expect(element(by.css('#confirmAlert')).isDisplayed()).toEqual(false);
 
         confirmPass.clear();
         element(by.css('#firstname')).click();
-        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(true);
+        expect(element(by.css('#confirmAlert')).isDisplayed()).toEqual(true);
     });
 
     it('password should match', function() {
@@ -106,6 +106,18 @@ describe('Birthdate', function() {
         birthdate.sendKeys("hafjshjhsa");
         birthdate.clear();
         expect(validDate.isPresent()).toEqual(true);
+        
+        birthdate.sendKeys("2");
+        birthdate.clear();
+        expect(validDate.isPresent()).toEqual(true);
+        
+        birthdate.sendKeys("2/2");
+        birthdate.clear();
+        expect(validDate.isPresent()).toEqual(true);
+
+        birthdate.sendKeys("2/2/2");
+        birthdate.clear();
+        expect(validDate.isPresent()).toEqual(false);
     });
 });
 
