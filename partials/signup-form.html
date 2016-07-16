@@ -6,11 +6,12 @@
 	</div>
 	<div class="form-group">
 		<label for="firstname">First Name</label>
-		<input type="text" id="firstname" name="firstname" class="form-control" required ng-model="firstname" placeholder="your first name">
+		<input type="text" id="firstname" name="firstname" class="form-control" ng-model="firstname" placeholder="your first name">
 	</div>
 	<div class="form-group">
 		<label for="lastname">Last Name</label>
 		<input type="text" id="lastname" name="lastname" class="form-control" required ng-model="lastname" placeholder="your last name">
+		<p class="help-block" id="vlastname" ng-show="signupForm.lastname.$invalid">We need to know your last name.</p>
 	</div>
 	<div class="form-group">
 		<label for="birthdate">Date of Birth</label>
