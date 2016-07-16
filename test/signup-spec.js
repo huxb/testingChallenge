@@ -124,7 +124,7 @@ describe('Birthdate', function() {
 		expect(submitButton.isEnabled()).toEqual(false);
 	});
     it("should be disabled if any field is invalid, and enabled if otherwise", function(){
-        if(element(by.css('#emptyEmail')).isDisplayed()|| element(by.css('#invalidEmail')).isDisplayed() || element(by.css('#vfirstname')).isDisplayed() || element(by.css('#vlastname')).isDisplayed() || element(by.css('#errorDateValid')).isDisplayed() || element(by.css('#errorAge')).isDisplayed() || element(by.css('#passwordAlert')).isDisplayed() || element(by.css('#matchPass')).isDisplayed() || element(by.css('#confirmAlert')).isDisplayed())
+        if(element(by.css('#emptyEmail')).isDisplayed()|| element(by.css('#invalidEmail')).isDisplayed() || element(by.css('#vfirstname')).isDisplayed() || element(by.css('#vlastname')).isDisplayed() || element(by.css('#birthdateAlert')).isDisplayed() || element(by.css('#errorDateValid')).isDisplayed() || element(by.css('#errorAge')).isDisplayed() || element(by.css('#passwordAlert')).isDisplayed() || element(by.css('#matchPass')).isDisplayed() || element(by.css('#confirmAlert')).isDisplayed())
             expect(submitButton.isEnabled()).toEqual(false);
         else
             expect(submitButton.isEnabled()).toEqual(true);
