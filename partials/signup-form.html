@@ -1,4 +1,5 @@
 <form name="signupForm" ng-controller="testingCtrl">
+	<div class="alert-success" role="alert" aria-live="polite" ng-show="signupForm.$valid && showAlert==true" id="alert">Successfully Submitted Form</div>
 	<div class="form-group">
 		<label for="email">Email</label>
 		<input type="email" id="email" name="input" class="form-control" ng-model="email.text" placeholder="email address" required>
@@ -30,13 +31,17 @@
 	<div class="form-group">
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass" ng-change="validateBday()">
+<<<<<<< HEAD
 		<p class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
 		<p class="help-block matchPass" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
+=======
+		<p id="matchPass" class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
+		<p class="help-block" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
+>>>>>>> 1be749d3136d8e8bfae5206e6a3c0d6d041aeb82
 	</div>
 	<div class="form-group">
 		<button role="button" aria-label="Reset" type="reset" class="btn btn-default">Reset</button>
-		<button type="submit" aria-label="Submit" class="btn btn-primary" ng-disabled="signupForm.$invalid" ng-click="submitForm()">Submit</button>
-		<p role="alert" aria-live="polite" ng-if="signupForm.$valid && submit==true" id="alert">Successfully Submitted Form</p>
+		<button id="submit" type="submit" aria-label="Submit" class="btn btn-primary" ng-disabled="signupForm.$invalid" ng-click="showAlert=true">Submit</button>
 	</div>
 </form>
 <!-- <p aria-live="polite" role="alert" class="errorValid" ng-if="signupForm.birthdate.$error.validDate">You must enter date in a valid date format</p>
