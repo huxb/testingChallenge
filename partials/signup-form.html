@@ -40,7 +40,7 @@
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass">
 		<p id="matchPass" class="error" role="alert" ng-show="password != confirmPass && signupForm.confirmPass.$touched">Passwords don't match!</p>
-		<p id="confirmAlert" class="error" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched && password == confirmPass">Required!</p>
+		<p id="confirmAlert" class="error" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched && password===confirmPass">Required!</p>
 	</div>
 
 	<div class="form-group">
