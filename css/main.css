@@ -9,7 +9,7 @@
     
 }
 
-#enterPass1 #enterPass2{
+#enterPass1, #enterPass2{
     color: red;
     display: none;
     
