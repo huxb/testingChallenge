@@ -19,7 +19,6 @@ describe('Last Name', function () {
         expect(errorMessage.isDisplayed()).toEqual(false);
     });
 });
-<<<<<<< HEAD
 
 //Test password and confirm passowrd for match
 describe('Password', function(){
@@ -27,25 +26,15 @@ describe('Password', function(){
     var password = element(by.css('#pasword'));
     var confirmPass = element(by.css('#confirm'));
     it('password1 should exist', function() {
-        if(expect(password).not.toBe(""))
-            expect(element(by.css('#enterPass1')).isDisplayed()).toBe(true);
-        else
-            expect(element(by.css('#enterPass1')).isDisplayed()).toBe(false);
-    });
+        expect(password).not.toBe("");
+        expect(element(by.css('#enterPass1')).isDisplayed()).toBe(true);
 
-    it('password2 should exist', function() {
-        if(expect(confirmPass).not.toBe(""))
-            expect(element(by.css('#enterPass2')).isDisplayed()).toBe(true);
-        else
-            expect(element(by.css('#enterPass2')).isDisplayed()).toBe(false);
+        expect(confirmPass).not.toBe("");
+        expect(element(by.css('#enterPass2')).isDisplayed()).toBe(true);
     });
 
     it('both passwords should match', function(){
-        if(expect(password).toBe(confirmPass))        
-            expect(element(by.css('.matchPass')).isDisplayed()).toBe(true);
-        else
-            expect(element(by.css('.matchPass')).isDisplayed()).toBe(false);
+        expect(password).toBe(confirmPass);    
+        expect(element(by.css('.matchPass')).isDisplayed()).toBe(true);
     });
 });
-=======
->>>>>>> 004165e6a822963c89c39517f2c64a7f404f4c16
