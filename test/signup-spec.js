@@ -4,27 +4,22 @@
 describe('Name', function () {
     browser.get('http://localhost:8080/#/signup-form.html');
     it('should exist after touching', function () {
-
         var firstNameInput = element(by.css('#firstname'));
         var lastNameInput = element(by.css('#lastname'));
-        firstNameInput.sendKeys("");
-        firstNameInput.clear();
 
+        firstNameInput.clear();
         element(by.css('#lastname')).click();
         expect(element(by.css('#vfirstname').isDisplayed())).toEqual(true);
+
         firstNameInput.sendKeys("a");
         expect(element(by.css('#vfirstname').isDisplayed())).toEqual(false);
-        firstNameInput.clear();
 
-        lastNameInput.sendKeys("");
         lastNameInput.clear();
-
         element(by.css('#firstname')).click();
         expect(element(by.css('#vlastname').isDisplayed())).toEqual(true);
+
         lastNameInput.sendKeys("a");
         expect(element(by.css('#vlastname').isDisplayed())).toEqual(false);
-        lastNameInput.clear();
-
     });
 });
 
@@ -35,19 +30,18 @@ describe('Password', function(){
     var confirmPass = element(by.css('#confirmPass'));
     it('password should exist', function() {
         password.sendKeys('temp');
+        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(false);
+
         password.clear();
         element(by.css('#firstname')).click();
         expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(true);
 
-        password.sendKeys('password');
-        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(false);
+        confirmPass.sendKeys('password');
+        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(false);
 
         confirmPass.clear();
         element(by.css('#firstname')).click();
         expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(true);
-
-        confirmPass.sendKeys('password');
-        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(false);
     });
 
     it('password should match', function() {
@@ -60,7 +54,7 @@ describe('Password', function(){
         password.clear();
         confirmPass.clear();
         password.sendKeys('password');
-        confirmPass.sendKeys('passwordNotValid');   
+        confirmPass.sendKeys('passwoord');   
         expect(element(by.css('#matchPass')).isDisplayed()).toEqual(true);
     });
 });
@@ -115,10 +109,8 @@ describe('Birthdate', function() {
     });
 });
 
--describe('Submit', function () {
+describe('Submit', function () {
     browser.get('http://localhost:8080/#/signup-form.html');
-     // if any of the following is invalid, the button should be disabled: email, lastname, birthdate, password, confirm
-    // only email
     var email = element(by.css("#email"));
     var firstName = element(by.css("#firstname"));
     var lastName = element(by.css("#lastname"));
@@ -126,6 +118,7 @@ describe('Birthdate', function() {
     var password = element(by.css("#password"));
     var passConf = element(by.css("#confirmPass"));
     var submitButton = element(by.css("#submit"));
+    //check if button isnt enabled when no inputs in any field
     it("should be disabled when form is blank", function() {
 		email.clear();
 		firstName.clear();
@@ -135,6 +128,8 @@ describe('Birthdate', function() {
 		passConf.clear();
 		expect(submitButton.isEnabled()).toEqual(false);
 	});
+    //if any of the error message is being displayed
+    //button is expected not to be enabled
     it("should be disabled if any field is invalid, and enabled if otherwise", function(){
         if(element(by.css('#emptyEmail')).isDisplayed()|| element(by.css('#invalidEmail')).isDisplayed() || element(by.css('#vfirstname')).isDisplayed() || element(by.css('#vlastname')).isDisplayed() || element(by.css('#birthdateAlert')).isDisplayed() || element(by.css('#errorDateValid')).isDisplayed() || element(by.css('#errorAge')).isDisplayed() || element(by.css('#passwordAlert')).isDisplayed() || element(by.css('#matchPass')).isDisplayed() || element(by.css('#confirmAlert')).isDisplayed())
             expect(submitButton.isEnabled()).toEqual(false);
