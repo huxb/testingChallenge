@@ -11,7 +11,7 @@
 
 	<div class="form-group">
 		<label for="firstname">First Name</label>
-		<input type="text" id="firstname" name="firstname" class="form-control" ng-model="firstname" placeholder="your first name">		
+		<input type="text" id="firstname" name="firstname" class="form-control" required ng-model="firstname" placeholder="your first name">		
 		<p class="help-block error" id="vfirstname" ng-show="signupForm.firstname.$invalid &&  signupForm.firstname.$touched">We need to know your first name.</p>
 	</div>
 
@@ -37,7 +37,7 @@
 	<div class="form-group">
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass" ng-change="validateBday()">
-		<p id="matchPass" class="error" role="alert" ng-show="password != confirmPass && signupForm.confirmPass.$touched">Passwords don't' match!</p>
+		<p id="matchPass" class="error" role="alert" ng-show="password != confirmPass && signupForm.confirmPass.$touched">Passwords don't match!</p>
 		<p id="confirmAlert" class="error" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
 	</div>
 
