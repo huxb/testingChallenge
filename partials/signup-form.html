@@ -11,20 +11,21 @@
 
 	<div class="form-group">
 		<label for="firstname">First Name</label>
-		<input type="text" id="firstname" name="firstname" class="form-control" ng-model="firstname" placeholder="your first name">
+		<input type="text" id="firstname" name="firstname" class="form-control" ng-model="firstname" placeholder="your first name">		
+		<p class="help-block error" id="vfirstname" ng-show="signupForm.firstname.$touched">We need to know your first name.</p>
 	</div>
 
 	<div class="form-group">
 		<label for="lastname">Last Name</label>
 		<input type="text" id="lastname" name="lastname" class="form-control" required ng-model="lastname" placeholder="your last name">
-		<p class="help-block" id="vlastname" ng-show="signupForm.lastname.$invalid && signupForm.lastname.$touched">We need to know your last name.</p>
+		<p class="help-block error" id="vlastname" ng-show="signupForm.lastname.$invalid && signupForm.lastname.$touched">We need to know your last name.</p>
 	</div>
 
 	<div class="form-group">
 		<label for="birthdate">Birthdate</label>
-		<input type="text" id="birthdate" name="birthdate" class="form-control error" required ng-model="birthdate" placeholder="your birthdate">
-		<p aria-live="polite" role="alert" id="errorDateValid" ng-if="signupForm.birthdate.$error.validDate">You must enter date in a valid date format.</p>
-		<p aria-live="polite" role="alert" id="errorAge" ng-if="signupForm.birthdate.$error.validAge">You must be atleast 13 years old to join.</p>
+		<input type="text" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate" placeholder="your birthdate">
+		<p aria-live="polite" role="alert" id="errorDateValid" ng-if="signupForm.birthdate.$error.validDate" class="error">You must enter date in a valid date format.</p>
+		<p aria-live="polite" role="alert" id="errorAge" ng-if="signupForm.birthdate.$error.validAge" class="error">You must be atleast 13 years old to join.</p>
 	</div>
 
 	<div class="form-group">

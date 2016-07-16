@@ -1,13 +1,3 @@
-#vlastname {
-    color: red;
-};
-
-/*set all error messages to be red*/
-.errorBox{
-    color: red;
-    display: none;
-    
-}
 .error {
     color: red;
 }
