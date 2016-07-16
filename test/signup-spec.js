@@ -102,3 +102,31 @@ describe('Birthdate', function() {
         expect(validDate.isPresent()).toEqual(true);
     });
 });
+
+-describe('Submit', function () {
+ -    browser.get('http://localhost:8080/#/signup-form.html');
+ -    // if any of the following is invalid, the button should be disabled: email, lastname, birthdate, password, confirm
+ -    // only email
+    it("should be disabled when form is blank", function() {
+		var submitButton = element(by.css("#submit"));
+		var email = element(by.css("#email"));
+		var lName = element(by.css("#lName"));
+		var date = element(by.css("#birthdate"));
+		var password = element(by.css("#password"));
+		var passConf = element(by.css("#passwordConf"));
+		email.clear();
+		lName.clear();
+		date.clear();
+		password.clear();
+		passConf.clear();
+		expect(submitButton.isEnabled()).toEqual(false);
+	});
+ -    it('submit is disabled if email is invalid', function () {
+ -        element(by.css('#lastname')).sendKeys('LastName');
+ -        element(by.css('#birthdate')).sendKeys('1/1/1900');
+ -        element(by.css('#password')).sendKeys('Password');
+ -        element(by.css('#confirmPass')).sendKeys('Password');
+ -        expect(element(by.css('#submit')).isEnabled()).toBe(false);
+ -        element(by.css('#email')).sendKeys('validEmail@testing.app');
+ -        expect(element(by.css('#submit')).isEnabled()).toBe(true);
+ -    });
