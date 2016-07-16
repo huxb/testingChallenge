@@ -7,6 +7,7 @@ testingApp.controller('testingCtrl', ['$scope', function($scope) {
     	$scope.signupForm.birthdate.$setValidity("validDate", true);
     	$scope.signupForm.birthdate.$setValidity("validAge", true);
     	var date = Date.parse($scope.birthdate);
+        var age = getAge(date);
     	if(date.toString() == 'NaN') {
     		// date is not a number
     		$scope.signupForm.birthdate.$setValidity("validDate", false);
