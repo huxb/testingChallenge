@@ -5,6 +5,6 @@
 /*set all error messages to be red*/
 .help-block{
     color: red;
-    visibility: none;
+    visibility: hidden;
     
 }
