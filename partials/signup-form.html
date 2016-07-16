@@ -31,13 +31,8 @@
 	<div class="form-group">
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass" ng-change="validateBday()">
-<<<<<<< HEAD
-		<p class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
-		<p class="help-block matchPass" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
-=======
 		<p id="matchPass" class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
 		<p class="help-block" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
->>>>>>> 1be749d3136d8e8bfae5206e6a3c0d6d041aeb82
 	</div>
 	<div class="form-group">
 		<button role="button" aria-label="Reset" type="reset" class="btn btn-default">Reset</button>

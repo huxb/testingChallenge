@@ -67,10 +67,16 @@ describe('Email', function() {
 describe('Birthdate', function() {
     it('should give invalid error when a user is under 13', function() {
         var birthdate = element(by.css('#birthdate')); 
-        var check = element(by.css('#birthdate'));
+        var check = element(by.css('#errorAge'));
         birthdate.sendKeys('1/1/2014');
         expect(check.isPresent()).toEqual(true);
     }
+    it('should be invalid if date is not in the right format', function() {
+        var birthdate = element(by.css('#birthdate')); 
+        var validDate = element(by.css('#errorDateValid'));
+        birthdate.sendKeys("hafjshjhsa");
+        expect(validDate.isPresent()).toEqual(true);
+    });
 });
 // Test submit button
 describe('Submit', function () {
