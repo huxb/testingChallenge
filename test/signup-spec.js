@@ -7,19 +7,24 @@ describe('Name', function () {
 
         var firstNameInput = element(by.css('#firstname'));
         var lastNameInput = element(by.css('#lastname'));
-        // if the name bar has been touched, but still no input, 
-        // there should be error message dislayed
         firstNameInput.sendKeys("");
-        lastNameInput.sendKeys("");
-        expect(element(by.css('#vfirstname').isDisplayed())).toEqual(true);
-        expect(element(by.css('#vlastname').isDisplayed())).toEqual(true);
-
-        // if the name bar has been touched, and has an input, 
-        // there should not be error message dislayed
         firstNameInput.clear();
-        lastNameInput.clear();
+
+        element(by.css('#lastname')).click();
+        expect(element(by.css('#vfirstname').isDisplayed())).toEqual(true);
+        firstNameInput.sendKeys("a");
         expect(element(by.css('#vfirstname').isDisplayed())).toEqual(false);
+        firstNameInput.clear();
+
+        lastNameInput.sendKeys("");
+        lastNameInput.clear();
+
+        element(by.css('#firstname')).click();
+        expect(element(by.css('#vlastname').isDisplayed())).toEqual(true);
+        lastNameInput.sendKeys("a");
         expect(element(by.css('#vlastname').isDisplayed())).toEqual(false);
+        lastNameInput.clear();
+
     });
 });
 
