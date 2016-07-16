@@ -38,3 +38,28 @@ describe('Password', function(){
         expect(element(by.css('.matchPass')).isDisplayed()).toBe(true);
     });
 });
+
+// Testing email
+describe('Email', function() {
+    browser.get('http://localhost:8080/#/signup-form.html');
+    var email = element(by.css('#email'));
+    // if email is empty after touched, display error message to ask for input
+    it ('email should exist', function() {
+        email.click();  // select email
+        element(by.css('#firstname')).click();  // select something else, so email is touched
+        expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(true);
+        expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(false);
+    });
+    // if email is not valid, display error message to alert invalid
+    it ('email should be valid', function() {
+        email.sendKeys('temp');
+        expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(false);
+        expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(true);
+    });
+    // if email is valid, do not display
+    it ('no warnings if everything is correct', function() {
+        email.sendKeys('validEmail@testing.app');
+        expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(false);
+        expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(false);
+    });
+});
