@@ -3,12 +3,8 @@
 };
 
 /*set all error messages to be red*/
-.helpBlock{
+.errorBox{
     color: red;
     display: none;
     
-}
-#enterPass1{
-    color: red;
-    display: none;
 }
