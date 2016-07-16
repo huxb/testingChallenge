@@ -2,7 +2,8 @@
 	<div class="form-group">
 		<label for="email">Email</label>
 		<input type="email" id="email" name="email" class="form-control" required ng-model="email" placeholder="email address">
-		<!-- Show errors -->
+		<p class="help-block" ng-if="signupForm.email.$touched">Required!</p>
+		<p class="error" ng-show="signupForm.input.$error.email">Not valid email!</p>
 	</div>
 	<div class="form-group">
 		<label for="firstname">First Name</label>
@@ -11,6 +12,7 @@
 	<div class="form-group">
 		<label for="lastname">Last Name</label>
 		<input type="text" id="lastname" name="lastname" class="form-control" required ng-model="lastname" placeholder="your last name">
+		<p class="help-block" ng-if="signupForm.lastname.$touched && signupForm.lastname.$invalid">Required!</p>
 	</div>
 	<div class="form-group">
 		<label for="birthdate">Date of Birth</label>
