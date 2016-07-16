@@ -1,22 +1,25 @@
 "use strict";
 
 // Test First Name and Last Name 
-describe('Last Name', function () {
+describe('Name', function () {
     browser.get('http://localhost:8080/#/signup-form.html');
     it('should exist after touching', function () {
 
+        var firstNameInput = element(by.css('#firstname'));
         var lastNameInput = element(by.css('#lastname'));
-        // if the last name bar has been touched, but still no input, 
+        // if the name bar has been touched, but still no input, 
         // there should be error message dislayed
+        firstNameInput.sendKeys("");
         lastNameInput.sendKeys("");
-        var errorMessage = element(by.css('#vlastname'));
-        expect(errorMessage.isPresent()).toEqual(true);
+        expect(element(by.css('#vfirstname').isDisplayed())).toEqual(true);
+        expect(element(by.css('#vlastname').isDisplayed())).toEqual(true);
 
-        // if the last name bar has been touched, and has an input, 
+        // if the name bar has been touched, and has an input, 
         // there should not be error message dislayed
+        firstNameInput.clear();
         lastNameInput.clear();
-        lastNameInput.sendKeys('a');
-        expect(errorMessage.isDisplayed()).toEqual(false);
+        expect(element(by.css('#vfirstname').isDisplayed())).toEqual(false);
+        expect(element(by.css('#vlastname').isDisplayed())).toEqual(false);
     });
 });
 
