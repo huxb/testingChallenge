@@ -35,7 +35,7 @@ describe('Password', function(){
 
     it('both passwords should match', function(){
         expect(password).toBe(confirmPass);    
-        expect(element(by.css('.matchPass')).isDisplayed()).toBe(true);
+        expect(element(by.css('#matchPass')).isDisplayed()).toBe(true);
     });
 });
 
@@ -61,5 +61,21 @@ describe('Email', function() {
         email.sendKeys('validEmail@testing.app');
         expect(element(by.css('#emptyEmail')).isDisplayed()).toEqual(false);
         expect(element(by.css('#invalidEmail')).isDisplayed()).toEqual(false);
+    });
+});
+
+// Test submit button
+describe('Submit', function () {
+    browser.get('http://localhost:8080/#/signup-form.html');
+    // if any of the following is invalid, the button should be disabled: email, lastname, birthdate, password, confirm
+    // only email
+    it('submit is disabled if email is invalid', function () {
+        element(by.css('#lastname')).sendKeys('LastName');
+        element(by.css('#birthdate')).sendKeys('1/1/1900');
+        element(by.css('#password')).sendKeys('Password');
+        element(by.css('#confirmPass')).sendKeys('Password');
+        expect(element(by.css('#submit')).isEnabled()).toBe(false);
+        element(by.css('#email')).sendKeys('validEmail@testing.app');
+        expect(element(by.css('#submit')).isEnabled()).toBe(true);
     });
 });
