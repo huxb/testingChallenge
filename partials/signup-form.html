@@ -24,7 +24,8 @@
 
 	<div class="form-group">
 		<label for="birthdate">Birthdate</label>
-		<input type="text" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate" placeholder="your birthdate" ng-change="validateBday()>		<p id="birthdateAlert" role="alert" class="error" ng-show="signupForm.birthdate.$touched && signupForm.birthdate.$invalid">Required!</p>	
+		<input type="text" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate" placeholder="your birthdate" ng-change="validateBday()">		
+		<p id="birthdateAlert" role="alert" class="error" ng-show="signupForm.birthdate.$touched && signupForm.birthdate.$invalid">Required!</p>	
 		<p aria-live="polite" role="alert" id="errorDateValid" ng-if="signupForm.birthdate.$error.validDate" class="error" ">You must enter date in a valid date format.</p>
 		<p aria-live="polite" role="alert" id="errorAge" ng-if="signupForm.birthdate.$error.validAge" class="error">You must be atleast 13 years old to join.</p>
 	</div>
