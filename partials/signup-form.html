@@ -19,8 +19,8 @@
 	<div class="form-group">
 		<label for="birthdate">Date of Birth</label>
 		<input type="text" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate">
-		<p aria-live="polite" role="alert" ng-if="signupForm.birthdate.$error.validDate">You must enter date in a valid date format.</p>
-		<p aria-live="polite" role="alert" class="errorAge" ng-if="signupForm.birthdate.$error.validAge">You must be atleast 13 years old to join.</p>
+		<p aria-live="polite" role="alert" id="errorDateValid" ng-if="signupForm.birthdate.$error.validDate">You must enter date in a valid date format.</p>
+		<p aria-live="polite" role="alert" id="errorAge" ng-if="signupForm.birthdate.$error.validAge">You must be atleast 13 years old to join.</p>
 	</div>
 	<div class="form-group">
 		<label for="password">Password</label>
@@ -31,7 +31,7 @@
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass" ng-change="validateBday()">
 		<p class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
-		<p class="help-block" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
+		<p class="help-block matchPass" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
 	</div>
 	<div class="form-group">
 		<button role="button" aria-label="Reset" type="reset" class="btn btn-default">Reset</button>
