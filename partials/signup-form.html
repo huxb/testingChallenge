@@ -8,32 +8,38 @@
 			<span id="invalidEmail" class="error" ng-show="signupForm.input.$error.email">Not valid email!</span>
 		</div>
 	</div>
+
 	<div class="form-group">
 		<label for="firstname">First Name</label>
 		<input type="text" id="firstname" name="firstname" class="form-control" ng-model="firstname" placeholder="your first name">
 	</div>
+
 	<div class="form-group">
 		<label for="lastname">Last Name</label>
 		<input type="text" id="lastname" name="lastname" class="form-control" required ng-model="lastname" placeholder="your last name">
 		<p class="help-block" id="vlastname" ng-show="signupForm.lastname.$invalid && signupForm.lastname.$touched">We need to know your last name.</p>
 	</div>
+
 	<div class="form-group">
 		<label for="birthdate">Date of Birth</label>
 		<input type="text" id="birthdate" name="birthdate" class="form-control" required ng-model="birthdate">
 		<p aria-live="polite" role="alert" id="errorDateValid" ng-if="signupForm.birthdate.$error.validDate">You must enter date in a valid date format.</p>
 		<p aria-live="polite" role="alert" id="errorAge" ng-if="signupForm.birthdate.$error.validAge">You must be atleast 13 years old to join.</p>
 	</div>
+
 	<div class="form-group">
 		<label for="password">Password</label>
 		<input type="password" id="password" name="password" class="form-control" required ng-model="password">
-		<p role="alert" class="help-block" ng-show="signupForm.password.$touched && signupForm.password.$invalid">Required!</p>	
+		<p id="passwordAlert" role="alert" class="help-block" ng-show="signupForm.password.$touched && signupForm.password.$invalid">Required!</p>	
 	</div>
+
 	<div class="form-group">
 		<label for="confirm-password">Confirm Password</label>
 		<input type="password" id="confirmPass" name="confirmPass" class="form-control" required ng-model="confirmPass" ng-change="validateBday()">
-		<p id="matchPass" class="help-block" role="alert" ng-if="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
-		<p class="help-block" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
+		<p id="matchPass" class="help-block" role="alert" ng-show="password != confirmPass && signupForm.confirmPass.$touched">Passwords must match!</p>
+		<p id="confirmAlert" class="help-block" role="alert" ng-show="signupForm.confirmPass.$invalid && signupForm.confirmPass.$touched">Required!</p>
 	</div>
+
 	<div class="form-group">
 		<button role="button" aria-label="Reset" type="reset" class="btn btn-default">Reset</button>
 		<button id="submit" type="submit" aria-label="Submit" class="btn btn-primary" ng-disabled="signupForm.$invalid" ng-click="showAlert=true">Submit</button>

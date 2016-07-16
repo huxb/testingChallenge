@@ -23,21 +23,40 @@ describe('Last Name', function () {
 //Test password and confirm passowrd for match
 describe('Password', function(){
     browser.get('http://localhost:8080/#/signup-form.html');
-    var password = element(by.css('#pasword'));
-    var confirmPass = element(by.css('#confirm'));
-    it('password1 should exist', function() {
-        expect(password).not.toBe("");
-        expect(element(by.css('#enterPass1')).isDisplayed()).toBe(true);
+    var password = element(by.css('#password'));
+    var confirmPass = element(by.css('#confirmPass'));
+    it('password should exist', function() {
+        password.sendKeys('temp');
+        password.clear();
+        element(by.css('#firstname')).click();
+        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(true);
 
-        expect(confirmPass).not.toBe("");
-        expect(element(by.css('#enterPass2')).isDisplayed()).toBe(true);
+        password.sendKeys('password');
+        expect(element(by.css('#passwordAlert')).isDisplayed()).toBe(false);
+
+        confirmPass.clear();
+        element(by.css('#firstname')).click();
+        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(true);
+
+        confirmPass.sendKeys('password');
+        expect(element(by.css('#confirmAlert')).isDisplayed()).toBe(false);
     });
 
-    it('both passwords should match', function(){
-        expect(password).toBe(confirmPass);    
-        expect(element(by.css('#matchPass')).isDisplayed()).toBe(true);
+    it('password should match', function() {
+        password.clear();
+        confirmPass.clear();
+        password.sendKeys('password');
+        confirmPass.sendKeys('password');   
+        expect(element(by.css('#matchPass')).isDisplayed()).toEqual(false);
+
+        password.clear();
+        confirmPass.clear();
+        password.sendKeys('password');
+        confirmPass.sendKeys('passwordNotValid');   
+        expect(element(by.css('#matchPass')).isDisplayed()).toEqual(true);
     });
 });
+
 
 // Testing email
 describe('Email', function() {
@@ -64,32 +83,22 @@ describe('Email', function() {
     });
 });
 
+
 describe('Birthdate', function() {
     it('should give invalid error when a user is under 13', function() {
         var birthdate = element(by.css('#birthdate')); 
         var check = element(by.css('#errorAge'));
-        birthdate.sendKeys('1/1/2014');
+         birthdate.sendKeys('1/1/2014');
+        element(by.css('#password')).sendKeys('password');
+        element(by.css('#confirmPass')).sendKeys('password');
         expect(check.isPresent()).toEqual(true);
-    }
+    });
     it('should be invalid if date is not in the right format', function() {
         var birthdate = element(by.css('#birthdate')); 
         var validDate = element(by.css('#errorDateValid'));
         birthdate.sendKeys("hafjshjhsa");
+        element(by.css('#password')).sendKeys('password');
+        element(by.css('#confirmPass')).sendKeys('password');
         expect(validDate.isPresent()).toEqual(true);
-    });
-});
-// Test submit button
-describe('Submit', function () {
-    browser.get('http://localhost:8080/#/signup-form.html');
-    // if any of the following is invalid, the button should be disabled: email, lastname, birthdate, password, confirm
-    // only email
-    it('submit is disabled if email is invalid', function () {
-        element(by.css('#lastname')).sendKeys('LastName');
-        element(by.css('#birthdate')).sendKeys('1/1/1900');
-        element(by.css('#password')).sendKeys('Password');
-        element(by.css('#confirmPass')).sendKeys('Password');
-        expect(element(by.css('#submit')).isEnabled()).toBe(false);
-        element(by.css('#email')).sendKeys('validEmail@testing.app');
-        expect(element(by.css('#submit')).isEnabled()).toBe(true);
     });
 });
